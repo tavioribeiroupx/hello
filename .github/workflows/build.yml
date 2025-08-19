@@ -1,0 +1,33 @@
+# Nome do seu workflow, pode ser qualquer coisa
+name: Build em Runner Local
+
+# Gatilho: Este workflow vai rodar sempre que houver um 'push' na branch 'main'
+on:
+  push:
+    branches:
+      - main  # Mude para o nome da sua branch principal se for diferente (ex: master)
+
+# Tarefas a serem executadas
+jobs:
+  build-na-maquina-local:
+    # Ponto CRUCIAL: Diz ao GitHub para rodar este job em um runner
+    # que tenha a etiqueta 'hello_world' que você criou.
+    runs-on: hello_world
+
+    steps:
+      # Passo 1: Baixar o código do seu repositório para o runner
+      - name: 1. Baixando o código do projeto
+        uses: actions/checkout@v4
+
+      # Passo 2: Apenas um exemplo para mostrar que está funcionando
+      - name: 2. Listando arquivos no diretório
+        run: ls -la
+
+      # Passo 3: Adicione aqui os comandos do seu projeto
+      # Exemplo para um projeto Node.js
+      - name: 3. Instalando dependências e buildando (Exemplo)
+        run: |
+          echo "Iniciando o build do projeto..."
+          npm install       # Descomente se for um projeto Node.js
+          node n.js       # Descomente e ajuste para o seu comando de build
+          echo "Workflow executado com sucesso!"
