@@ -28,7 +28,7 @@ jobs:
       - name: 3. Instalando dependências e buildando (Exemplo)
         run: |
           echo "Iniciando o build do projeto..."
-          killall -9 node || true  # Mata qualquer processo Node.js em execução
+          killall node 
           echo "Instalando dependências..."
           npm install       # Descomente se for um projeto Node.js
           echo "Executando o build..."
