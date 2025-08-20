@@ -52,7 +52,7 @@ export default function Home() {
                 />
               </Link>
               <p className="text-center text-gray-400 dark:text-white/60">
-                Boa tarde Juliano
+                Boa tarde Usuário
               </p>
             </div>
           </div>
