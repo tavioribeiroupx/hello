@@ -41,7 +41,7 @@ export default function PublicLayout({
                 />
               </Link>
               <p className="text-center text-gray-400 dark:text-white/60">
-                O sistema definitivo para gerenciar seu estabelecimento gastronômico!
+                Teste!
               </p>
             </div>
           </div>
