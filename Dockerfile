@@ -12,6 +12,7 @@ COPY . .
 EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
+
 # Estágio 3: Build de Produção
 FROM node:18-alpine AS builder
 WORKDIR /app
