@@ -28,9 +28,6 @@ jobs:
       - name: 3. Instalando dependências e buildando (Exemplo)
         run: |
           echo "Iniciando o build do projeto..."
-          killall node 
-          echo "Instalando dependências..."
-          npm install       # Descomente se for um projeto Node.js
-          echo "Executando o build..."
-          node n.js       # Descomente e ajuste para o seu comando de build
+          npm i
+          npm run dev
           echo "Workflow executado com sucesso!"
