@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* variáveis de gradientes */
+  --gradient-light: var(--gradient-light, linear-gradient(180deg, #fff, #f6f6f6));
+  --gradient-medium: var(--gradient-medium, linear-gradient(180deg, #fefefe, #eaeaea));
+  --gradient-primary: var(--gradient-primary, linear-gradient(180deg, #dc3394, #9e2477));
+  --gradient-primary-over: var(--gradient-primary-over, linear-gradient(180deg, #e566af, rgba(0,0,0,0)));
+  --gradient-strong: var(--gradient-strong, linear-gradient(180deg, #4d0f3a, #1a1a1a));
+  --gradient-black-over: var(--gradient-black-over, linear-gradient(180deg, rgba(0,0,0,.6), transparent));
+  --gradient-home: var(--gradient-home, radial-gradient(circle at 30% 20%, #dc3394, transparent));
+  --gradient-public-pages: var(--gradient-public-pages, linear-gradient(135deg, #1c1c31, #9e2477));
+  --gradient-primary-black: var(--gradient-primary-black, linear-gradient(180deg, #9e2477, #000));
+}
+
+@theme inline {
+  /* fontes */
+  --font-*: initial;
+  --font-outfit: Outfit, sans-serif;
+
+  /* mapeia as variáveis de cor para os tokens utilitários do Tailwind */
+  --color-primary-25: #f2f7ff;
+  --color-primary-50: #ecf3ff;
+  --color-primary-100: #dde9ff;
+  --color-primary-200: #c2d6ff;
+  --color-primary-300: #9cb9ff;
+  --color-primary-400: #7592ff;
+  --color-primary-500: #465fff;
+  --color-primary-600: #3641f5;
+  --color-primary-700: #2a31d8;
+  --color-primary-800: #252dae;
+  --color-primary-900: #262e89;
+  --color-primary-950: #161950;
+
+  /* secondary */
+  --color-secondary-50: #e7e7ed;
+  --color-secondary-100: #cdccd9;
+  --color-secondary-200: #9a9ab3;
+  --color-secondary-300: #67668d;
+  --color-secondary-400: #3f3f66;
+  --color-secondary-500: #1c1c31;
+  --color-secondary-600: #161627;
+  --color-secondary-700: #11111e;
+  --color-secondary-800: #0b0b14;
+  --color-secondary-900: #06060b;
+
+  /* gray */
+  --color-gray-25: #fcfcfd;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f2f4f7;
+  --color-gray-200: #e4e7ec;
+  --color-gray-300: #d0d5dd;
+  --color-gray-400: #98a2b3;
+  --color-gray-500: #667085;
+  --color-gray-600: #475467;
+  --color-gray-700: #344054;
+  --color-gray-800: #1d2939;
+  --color-gray-900: #101828;
+  --color-gray-950: #0c111d;
+  --color-gray-dark: #1a2231;
+
+  /* tertiary */
+  --color-tertiary-50: #fdf8f8;
+  --color-tertiary-100: #f9eded;
+  --color-tertiary-200: #f1d9db;
+  --color-tertiary-300: #eac5c7;
+  --color-tertiary-400: #e4b0b4;
+  --color-tertiary-500: #e1c2c7;
+  --color-tertiary-600: #c1a2a6;
+  --color-tertiary-700: #a28388;
+  --color-tertiary-800: #83656a;
+  --color-tertiary-900: #64504f;
+
+  /* success */
+  --color-success-25: #f6fef9;
+  --color-success-50: #ecfdf3;
+  --color-success-100: #d1fadf;
+  --color-success-200: #a6f4c5;
+  --color-success-300: #6ce9a6;
+  --color-success-400: #32d583;
+  --color-success-500: #12b76a;
+  --color-success-600: #039855;
+  --color-success-700: #027a48;
+  --color-success-800: #05603a;
+  --color-success-900: #054f31;
+  --color-success-950: #053321;
+
+  /* error */
+  --color-error-25: #fffbfa;
+  --color-error-50: #fef3f2;
+  --color-error-100: #fee4e2;
+  --color-error-200: #fecdca;
+  --color-error-300: #fda29b;
+  --color-error-400: #f97066;
+  --color-error-500: #f04438;
+  --color-error-600: #d92d20;
+  --color-error-700: #b42318;
+  --color-error-800: #912018;
+  --color-error-900: #7a271a;
+  --color-error-950: #55160c;
+
+  /* tokens “de marca” p/ bg/text */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* gradientes → usar como bg-gradient-... */
+  --background-image-gradient-light: var(--gradient-light);
+  --background-image-gradient-medium: var(--gradient-medium);
+  --background-image-gradient-primary: var(--gradient-primary);
+  --background-image-gradient-primary-over: var(--gradient-primary-over);
+  --background-image-gradient-strong: var(--gradient-strong);
+  --background-image-gradient-black-over: var(--gradient-black-over);
+  --background-image-gradient-home: var(--gradient-home);
+  --background-image-gradient-public-pages: var(--gradient-public-pages);
+  --background-image-gradient-primary-black: var(--gradient-primary-black);
+
+  /* espaçamentos extras */
+  --spacing-1: 0.25rem;  /* 4px  */
+  --spacing-2: 0.5rem;   /* 8px  */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.25rem;  /* 20px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-7: 1.75rem;  /* 28px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-9: 2.25rem;  /* 36px */
+  --spacing-10: 2.5rem;  /* 40px */
+  --spacing-11: 2.75rem; /* 44px */
+  --spacing-12: 3rem;    /* 48px */
+  --spacing-13: 3.25rem; /* 52px */
+  --spacing-14: 3.5rem;  /* 56px */
+  --spacing-15: 3.75rem; /* 60px */
+  --spacing-16: 4rem;    /* 64px */
+  --spacing-17: 4.25rem; /* 68px */
+  --spacing-18: 4.5rem;  /* 72px */
+  --spacing-19: 4.75rem; /* 76px */
+  --spacing-20: 5rem;    /* 80px */
+  --spacing-24: 6rem;    /* 96px */
+  --spacing-28: 7rem;    /* 112px */
+  --spacing-32: 8rem;    /* 128px */
+  --spacing-36: 9rem;    /* 144px */
+  --spacing-40: 10rem;   /* 160px */
+  --spacing-44: 11rem;   /* 176px */
+  --spacing-48: 12rem;   /* 192px */
+  --spacing-52: 13rem;   /* 208px */
+  --spacing-56: 14rem;   /* 224px */
+  --spacing-60: 15rem;   /* 240px */
+  --spacing-64: 16rem;   /* 256px */
+
+  /* TEXTOS */
+  --text-1: 1.8rem;
+  --text-1--line-height: 1.333;
+  --text-1--letter-spacing: 0.15px;
+  --text-1--font-weight: 400;
+
+  --text-2: 1.1rem;
+  --text-2--line-height: 1.333;
+  --text-2--letter-spacing: -0.5px;
+  --text-2--font-weight: 400;
+
+  --text-3: 0.8rem;
+  --text-3--line-height: 1.333;
+  --text-3--letter-spacing: 0.25px;
+  --text-3--font-weight: 400;
+
+  --text-4: 0.5rem;
+  --text-4--line-height: 1.333;
+  --text-4--letter-spacing: 0.25px;
+  --text-4--font-weight: 300;
+
+  --text-5: 0.5rem;
+  --text-5--line-height: 1.333;
+  --text-5--letter-spacing: 0.25px;
+  --text-5--font-weight: 500;
+
+  --text-codigo: 3.2rem;
+  --text-codigo--line-height: 1.333;
+  --text-codigo--letter-spacing: 0.25px;
+  --text-codigo--font-weight: 700;
+
+  --text-underline-1: 1.2rem;
+  --text-underline-1--line-height: 1.333;
+  --text-underline-1--letter-spacing: 0.25px;
+  --text-underline-1--font-weight: 500;
+
+  --text-underline-2: 1rem;
+  --text-underline-2--line-height: 1.333;
+  --text-underline-2--letter-spacing: -0.5px;
+  --text-underline-2--font-weight: 500;
+
+  /* TÍTULOS */
+  --text-titulo-1: 2.3rem;
+  --text-titulo-1--line-height: 1.333;
+  --text-titulo-1--letter-spacing: -0.5px;
+  --text-titulo-1--font-weight: 500;
+
+  --text-titulo-2: 1.8rem;
+  --text-titulo-2--line-height: 1.333;
+  --text-titulo-2--letter-spacing: -0.5px;
+  --text-titulo-2--font-weight: 500;
+
+  --text-titulo-3: 1.5rem;
+  --text-titulo-3--line-height: 1.333;
+  --text-titulo-3--letter-spacing: -0.5px;
+  --text-titulo-3--font-weight: 600;
+
+  /* SUBTÍTULOS */
+  --text-subtitulo-1: 1.3rem;
+  --text-subtitulo-1--line-height: 1.333;
+  --text-subtitulo-1--letter-spacing: 0.25px;
+  --text-subtitulo-1--font-weight: 400;
+
+  --text-subtitulo-2: 1.2rem;
+  --text-subtitulo-2--line-height: 1.333;
+  --text-subtitulo-2--letter-spacing: 0.5px;
+  --text-subtitulo-2--font-weight: 300;
+
+  --text-subtitulo-3: 1rem;
+  --text-subtitulo-3--line-height: 1.333;
+  --text-subtitulo-3--letter-spacing: -0.5px;
+  --text-subtitulo-3--font-weight: 400;
+
+  /* BOTÕES */
+  --text-botao-1: 1.65rem;
+  --text-botao-1--line-height: 1.333;
+  --text-botao-1--letter-spacing: 0.25px;
+  --text-botao-1--font-weight: 500;
+
+  --text-botao-2: 1.5rem;
+  --text-botao-2--line-height: 1.333;
+  --text-botao-2--letter-spacing: 0.25px;
+  --text-botao-2--font-weight: 500;
+
+  --text-botao-3: 1.3rem;
+  --text-botao-3--line-height: 1.333;
+  --text-botao-3--letter-spacing: 0.5px;
+  --text-botao-3--font-weight: 500;
+
+  --text-botao-4: 1rem;
+  --text-botao-4--line-height: 1.333;
+  --text-botao-4--letter-spacing: -0.5px;
+  --text-botao-4--font-weight: 500;
+
+  /* TAGS */
+  --text-tag-1: 1.2rem;
+  --text-tag-1--line-height: 1.333;
+  --text-tag-1--letter-spacing: 0.5px;
+  --text-tag-1--font-weight: 400;
+
+  --text-tag-2: 0.9rem;
+  --text-tag-2--line-height: 1.333;
+  --text-tag-2--letter-spacing: 0.25px;
+  --text-tag-2--font-weight: 400;
+
+  --text-tag-3: 0.8rem;
+  --text-tag-3--line-height: 1.333;
+  --text-tag-3--letter-spacing: 0.25px;
+  --text-tag-3--font-weight: 300;
+
+  --text-tag-4: 0.8rem;
+  --text-tag-4--line-height: 1.333;
+  --text-tag-4--letter-spacing: 0.25px;
+  --text-tag-4--font-weight: 500;
+}
