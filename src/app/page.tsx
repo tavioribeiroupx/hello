@@ -52,7 +52,7 @@ export default function Home() {
                 />
               </Link>
               <p className="text-center text-gray-400 dark:text-white/60">
-                Teste 87979976784
+                Boa tarde Adriano
               </p>
             </div>
           </div>
