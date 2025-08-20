@@ -15,19 +15,13 @@ jobs:
     runs-on: hello_world
 
     steps:
-      # Passo 1: Baixar o código do seu repositório para o runner
       - name: 1. Baixando o código do projeto
         uses: actions/checkout@v4
 
-      # Passo 2: Apenas um exemplo para mostrar que está funcionando
-      - name: 2. Listando arquivos no diretório
-        run: ls -la
-
-      # Passo 3: Adicione aqui os comandos do seu projeto
-      # Exemplo para um projeto Node.js
-      - name: 3. Instalando dependências e buildando (Exemplo)
+      - name: 2. Instalando dependências e buildando (Exemplo)
         run: |
           echo "Iniciando o build do projeto..."
-          npm i
+          npm cache clean --force
+          npm ci
           npm run dev
           echo "Workflow executado com sucesso!"
