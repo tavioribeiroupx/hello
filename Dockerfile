@@ -4,6 +4,7 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm install
 
+
 # Estágio 2: Ambiente de Desenvolvimento
 FROM node:18-alpine AS development
 WORKDIR /app
