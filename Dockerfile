@@ -2,6 +2,7 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json* ./
+RUN npm install -g pnpm
 RUN pnpm install
 
 # Estágio 2: Ambiente de Desenvolvimento
