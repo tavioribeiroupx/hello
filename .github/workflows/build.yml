@@ -9,17 +9,31 @@ on:
 
 # Tarefas a serem executadas
 jobs:
-  build-na-maquina-local:
-    # Ponto CRUCIAL: Diz ao GitHub para rodar este job em um runner
-    # que tenha a etiqueta 'hello_world' que você criou.
-    runs-on: hello_world
+  build-and-deploy:
+    # Ponto chave: especifica que este job deve rodar no seu runner auto-hospedado
+    runs-on: self-hosted
 
+    # Define os passos sequenciais que o runner executará na sua máquina Ubuntu
     steps:
-      - name: 1. Baixando o código do projeto
+      # 1. Baixa o código mais recente do seu repositório
+      - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: 2. Instalando dependências e buildando
+      # 2. Constrói a nova imagem Docker localmente
+      # A tag da imagem será 'hello_world:latest'
+      - name: Buildar a imagem Docker
+        run: docker build -t hello_world:latest .
+
+      # 3. Para e remove o contêiner antigo para evitar conflitos de porta/nome
+      # O comando '|| true' garante que o workflow não falhe se o contêiner não existir (ex: na primeira vez)
+      - name: Parar e remover contêiner existente
         run: |
-          npm cache clean --force
-          npm i
-          npm run dev &  
+          docker stop hello_world_container || true
+          docker rm hello_world_container || true
+
+      # 4. Inicia um novo contêiner com a imagem que acabamos de construir
+      # Supondo que a aplicação rode na porta 80 dentro do contêiner e você queira expô-la na porta 8080 do seu Ubuntu.
+      # Ajuste as portas (-p) conforme sua necessidade.
+      - name: Iniciar novo contêiner
+        run: docker run -d --name hello_world_container -p 8080:80 hello_world:latest
+
