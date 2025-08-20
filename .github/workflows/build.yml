@@ -35,5 +35,5 @@ jobs:
       # Supondo que a aplicação rode na porta 80 dentro do contêiner e você queira expô-la na porta 8080 do seu Ubuntu.
       # Ajuste as portas (-p) conforme sua necessidade.
       - name: Iniciar novo contêiner
-        run: docker run -d --name hello_world_container -p 8080:80 hello_world:latest
+        run: docker run -d --name hello_world_container -p 3000:3000 hello_world:latest
 
