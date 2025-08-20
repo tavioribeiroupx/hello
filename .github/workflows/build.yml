@@ -18,10 +18,8 @@ jobs:
       - name: 1. Baixando o código do projeto
         uses: actions/checkout@v4
 
-      - name: 2. Instalando dependências e buildando (Exemplo)
+      - name: 2. Instalando dependências e buildando
         run: |
-          echo "Iniciando o build do projeto..."
           npm cache clean --force
-          npm ci
-          npm run dev
-          echo "Workflow executado com sucesso!"
+          npm i
+          npm run dev &  
