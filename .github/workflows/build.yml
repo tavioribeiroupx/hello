@@ -1,43 +1,28 @@
-# Nome do workflow
 name: Build e Deploy em Runner Local
 
-# Gatilho: rodar sempre que houver um 'push' na branch 'main'
 on:
   push:
     branches:
       - main
 
-# Tarefas a serem executadas
 jobs:
   build-e-deploy-local:
-    # Especifica que este job deve rodar em um runner com a etiqueta 'hello_world'
     runs-on: hello_world
 
     steps:
-      # Passo 1: Baixar a versão mais recente do código do repositório
       - name: 1. Baixando o código do projeto
         uses: actions/checkout@v4
 
-      # Passo 2: Configurar o ambiente Node.js (boa prática)
-      # Isso garante que a versão correta do Node.js está sendo usada.
       - name: 2. Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Mude para a versão que seu projeto precisa
+          node-version: '20'
 
-      # Passo 3: Instalar dependências do projeto
-      # Roda 'npm install' apenas se o package-lock.json mudou, o que é mais rápido.
       - name: 3. Instalar dependências
-        run: npm install --only=production # Use 'npm install' se também precisar de dependências de desenvolvimento
+        run: npm install
 
-      # Passo 4: Reiniciar a aplicação usando PM2
       - name: 4. Reiniciar a aplicação com PM2
         run: |
-          # Instala pm2 globalmente se ainda não estiver instalado
           npm install pm2 -g
-
-          # Inicia a aplicação com o nome 'hello_app' se ela não estiver rodando
-          # Ou recarrega a aplicação existente para aplicar as novas mudanças sem downtime
           pm2 start n.js --name "hello_app" || pm2 reload "hello_app"
-
           echo "Aplicação reiniciada com sucesso via PM2!"
