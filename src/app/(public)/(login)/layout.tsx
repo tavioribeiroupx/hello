@@ -41,7 +41,7 @@ export default function PublicLayout({
                 />
               </Link>
               <p className="text-center text-gray-400 dark:text-white/60">
-                Lauuuuuu
+                Lauuuuuufyyyyyyyyyyyyyy
               </p>
             </div>
           </div>
